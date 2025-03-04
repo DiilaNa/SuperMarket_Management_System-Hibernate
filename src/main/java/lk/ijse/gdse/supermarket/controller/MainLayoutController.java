@@ -43,7 +43,7 @@ public class MainLayoutController implements Initializable {
             content.getChildren().clear();
             AnchorPane load = FXMLLoader.load(getClass().getResource(fxmlPath));
 
-//  -------- Loaded anchor edges are bound to the content anchor --------
+//  -------- Loaded anchor edges are bound to the content anchor --
 //      (1) Bind the loaded FXML to all edges of the content anchorPane
             load.prefWidthProperty().bind(content.widthProperty());
             load.prefHeightProperty().bind(content.heightProperty());

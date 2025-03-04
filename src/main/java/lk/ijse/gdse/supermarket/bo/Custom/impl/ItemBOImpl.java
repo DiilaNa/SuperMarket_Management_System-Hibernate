@@ -5,6 +5,7 @@ import lk.ijse.gdse.supermarket.dao.Custom.ItemDAO;
 import lk.ijse.gdse.supermarket.dao.DAOFactory;
 import lk.ijse.gdse.supermarket.dto.ItemDTO;
 import lk.ijse.gdse.supermarket.entity.Item;
+import org.modelmapper.ModelMapper;
 
 
 import java.sql.SQLException;
@@ -15,14 +16,8 @@ public class ItemBOImpl implements ItemBO {
 
     @Override
     public boolean saveItem(ItemDTO itemDTO) throws SQLException {
-       Item item = new Item(
-                itemDTO.getItemId(),
-                itemDTO.getItemName(),
-                itemDTO.getQuantity(),
-                itemDTO.getPrice(),
-                new ArrayList<>()
-        );
-       return itemDAO.save(item);
+      Item item = new ModelMapper().map(itemDTO, Item.class);
+      return itemDAO.save(item);
     }
 
     @Override

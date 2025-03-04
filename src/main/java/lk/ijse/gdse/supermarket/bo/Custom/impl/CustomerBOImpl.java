@@ -36,15 +36,6 @@ public class CustomerBOImpl implements CustomerBO {
 
     @Override
     public boolean saveCustomer(CustomerDTO customerDTO) throws SQLException {
-     /*  Customer customer = new Customer(
-          customerDTO.getId(),
-          customerDTO.getName(),
-          customerDTO.getNic(),
-          customerDTO.getEmail(),
-          customerDTO.getPhone(),
-               new ArrayList<>()
-        );
-               return customerDao.save(customer);*/
         Customer customer = new ModelMapper().map(customerDTO, Customer.class);
         return customerDao.save(customer);
 
@@ -52,15 +43,8 @@ public class CustomerBOImpl implements CustomerBO {
 
     @Override
     public boolean updateCustomer(CustomerDTO customerDTO) throws SQLException {
-        Customer customer = new Customer(
-                customerDTO.getId(),
-                customerDTO.getName(),
-                customerDTO.getNic(),
-                customerDTO.getEmail(),
-                customerDTO.getPhone(),
-                new ArrayList<>()
-        );
-        return customerDao.update(customer);
+       Customer customer = new ModelMapper().map(customerDTO, Customer.class);
+       return customerDao.update(customer);
     }
 
     @Override

@@ -11,6 +11,8 @@ module lk.ijse.gdse.supermarket {
     requires org.hibernate.orm.core;
     requires jakarta.persistence;
     requires java.naming;
+    requires modelmapper;
+
 
     opens lk.ijse.gdse.supermarket.dto.tm to javafx.base;
     opens lk.ijse.gdse.supermarket.controller to javafx.fxml;

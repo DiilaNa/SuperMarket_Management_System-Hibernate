@@ -1,13 +1,16 @@
 package lk.ijse.gdse.supermarket.entity;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import lombok.*;
 
-@Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
-public class OrderDetails {
+@Data
+@Entity
+@Table(name = "order_details")
+
+public class OrderDetails implements  SuperEntity {
     private String orderId;
     private String itemId;
     private int quantity;

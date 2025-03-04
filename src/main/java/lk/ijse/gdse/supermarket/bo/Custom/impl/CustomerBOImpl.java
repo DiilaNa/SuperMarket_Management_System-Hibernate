@@ -5,6 +5,7 @@ import lk.ijse.gdse.supermarket.dao.Custom.CustomerDao;
 import lk.ijse.gdse.supermarket.dao.DAOFactory;
 import lk.ijse.gdse.supermarket.dto.CustomerDTO;
 import lk.ijse.gdse.supermarket.entity.Customer;
+import org.modelmapper.ModelMapper;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -35,24 +36,31 @@ public class CustomerBOImpl implements CustomerBO {
 
     @Override
     public boolean saveCustomer(CustomerDTO customerDTO) throws SQLException {
-       return customerDao.save(new Customer(
+     /*  Customer customer = new Customer(
           customerDTO.getId(),
           customerDTO.getName(),
           customerDTO.getNic(),
           customerDTO.getEmail(),
-          customerDTO.getPhone()
-        ));
+          customerDTO.getPhone(),
+               new ArrayList<>()
+        );
+               return customerDao.save(customer);*/
+        Customer customer = new ModelMapper().map(customerDTO, Customer.class);
+        return customerDao.save(customer);
+
     }
 
     @Override
     public boolean updateCustomer(CustomerDTO customerDTO) throws SQLException {
-        return customerDao.update(new Customer(
+        Customer customer = new Customer(
                 customerDTO.getId(),
                 customerDTO.getName(),
                 customerDTO.getNic(),
                 customerDTO.getEmail(),
-                customerDTO.getPhone()
-        ));
+                customerDTO.getPhone(),
+                new ArrayList<>()
+        );
+        return customerDao.update(customer);
     }
 
     @Override

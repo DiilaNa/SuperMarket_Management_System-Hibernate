@@ -15,22 +15,26 @@ public class ItemBOImpl implements ItemBO {
 
     @Override
     public boolean saveItem(ItemDTO itemDTO) throws SQLException {
-        return itemDAO.save(new Item(
+       Item item = new Item(
                 itemDTO.getItemId(),
                 itemDTO.getItemName(),
                 itemDTO.getQuantity(),
-                itemDTO.getPrice()
-        ));
+                itemDTO.getPrice(),
+                new ArrayList<>()
+        );
+       return itemDAO.save(item);
     }
 
     @Override
     public boolean updateItem(ItemDTO itemDTO) throws SQLException {
-        return itemDAO.update(new Item(
+       Item item =new Item(
                 itemDTO.getItemId(),
                 itemDTO.getItemName(),
                 itemDTO.getQuantity(),
-                itemDTO.getPrice()
-        ));
+                itemDTO.getPrice(),
+                new ArrayList<>()
+        );
+       return itemDAO.update(item);
     }
 
     @Override

@@ -8,6 +8,7 @@ import lk.ijse.gdse.supermarket.dao.DAOFactory;
 import lk.ijse.gdse.supermarket.db.DBConnection;
 import lk.ijse.gdse.supermarket.dto.OrderDTO;
 import lk.ijse.gdse.supermarket.dto.OrderDetailsDTO;
+import lk.ijse.gdse.supermarket.entity.Customer;
 import lk.ijse.gdse.supermarket.entity.Order;
 import lk.ijse.gdse.supermarket.entity.OrderDetails;
 
@@ -33,11 +34,13 @@ public class OrderBOImpl implements OrderBO {
 
 
             for (OrderDTO orderDTO : orderDTOS) {
-                boolean b2 = orderDAO.save(new Order(
+                Order order = new Order(
                         orderDTO.getOrderId(),
                         orderDTO.getCustomerId(),
-                        orderDTO.getOrderDate()
-                ));
+                        orderDTO.getOrderDate(),
+                        new ArrayList<>()
+                );
+                boolean b2 =  orderDAO.save(order);
                 if (!b2){
                     connection.rollback();
                     return false;

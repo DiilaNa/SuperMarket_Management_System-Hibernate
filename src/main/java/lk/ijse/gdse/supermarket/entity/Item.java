@@ -1,17 +1,26 @@
 package lk.ijse.gdse.supermarket.entity;
 
 
+import jakarta.persistence.*;
 import lombok.*;
 
-@Getter
-@Setter
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
+@Data
+@Entity
+@Table(name = "item" )
 public class Item {
+    @Id
+    @Column(name = "customer_id")
     private String itemId;
+    @Column(length = 100)
     private String itemName;
     private int quantity;
     private double price;
+
+    @OneToMany(mappedBy = "item")
+    private List<OrderDetails> orderDetails;
 }
 

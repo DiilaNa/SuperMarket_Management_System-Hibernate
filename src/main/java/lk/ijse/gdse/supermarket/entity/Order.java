@@ -6,6 +6,7 @@ import lombok.*;
 
 
 import java.sql.Date;
+import java.util.List;
 
 
 // Lombok annotations to generate methods automatically and reduce boilerplate code
@@ -20,11 +21,12 @@ public class Order {
     private String orderId;
     private String customerId;
     private Date orderDate;
+
     @ManyToOne
     @JoinColumn(name = "cust_id")
     private Customer customer;
 
+    @OneToMany(mappedBy = "orders")
+    private List<OrderDetails> orderDetails;
 
-
-    // @orderDetailsDTOS: A list of OrderDetailsDTO objects, each representing an item in the order
 }

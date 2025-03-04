@@ -22,14 +22,9 @@ public class ItemBOImpl implements ItemBO {
 
     @Override
     public boolean updateItem(ItemDTO itemDTO) throws SQLException {
-       Item item =new Item(
-                itemDTO.getItemId(),
-                itemDTO.getItemName(),
-                itemDTO.getQuantity(),
-                itemDTO.getPrice(),
-                new ArrayList<>()
-        );
+       Item item =new ModelMapper().map(itemDTO, Item.class);
        return itemDAO.update(item);
+
     }
 
     @Override

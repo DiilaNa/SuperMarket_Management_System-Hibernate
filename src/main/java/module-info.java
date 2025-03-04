@@ -14,6 +14,8 @@ module lk.ijse.gdse.supermarket {
 
     opens lk.ijse.gdse.supermarket.dto.tm to javafx.base;
     opens lk.ijse.gdse.supermarket.controller to javafx.fxml;
+
     opens lk.ijse.gdse.supermarket.entity to org.hibernate.orm.core; //entity tik coonnect kala
+    opens lk.ijse.gdse.supermarket.Config to jakarta.persistence;
     exports lk.ijse.gdse.supermarket;
 }

@@ -15,7 +15,10 @@ public class AppInitializer extends Application {
 
 
     public static void main(String[] args) {
+
         launch(); // Launch the JavaFX application
+
+
     }
 
     @Override
